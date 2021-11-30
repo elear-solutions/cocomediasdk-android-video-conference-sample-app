@@ -1,9 +1,9 @@
 <resources>
   <string name="app_name">Coco Sessions</string>
   <string name="end_call_for_all">End call for all</string>
-  <string name="user_name">User Name</string>
+  <string name="user_name">User Identifier (string with max length = 64)</string>
   <string name="continue_str">Continue</string>
-  <string name="base_url">Base Url</string>
+  <string name="base_url">Token Server Addr (ip_address:port)</string>
 
   <string name="invite">Invite</string>
 
