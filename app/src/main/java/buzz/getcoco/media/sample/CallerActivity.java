@@ -276,7 +276,6 @@ public class CallerActivity extends AppCompatActivity {
 
   private void updateParticipants() {
     ImmutableList<Node> participants = this.participants;
-    int participantsSize = participants.size();
 
     Log.d(TAG, "updateParticipants: nodes: " + participants);
 
@@ -291,7 +290,7 @@ public class CallerActivity extends AppCompatActivity {
       participants = participants.subList(0, playerViews.size());
     }
 
-    for (int i = 0; i < participantsSize; i++) {
+    for (int i = 0; i < participants.size(); i++) {
       NodePlayerView pv = playerViews.get(i);
 
       if (null == pv.getPlayer()) {
@@ -304,7 +303,7 @@ public class CallerActivity extends AppCompatActivity {
       pv.bindToNode(participants.get(i));
     }
 
-    for (int i = participantsSize; i < playerViews.size(); i++) {
+    for (int i = participants.size(); i < playerViews.size(); i++) {
       ExoPlayer player;
       NodePlayerView pv = playerViews.get(i);
 
