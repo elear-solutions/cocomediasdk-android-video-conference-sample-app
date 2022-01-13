@@ -35,10 +35,10 @@ android {
 }
 
 dependencies {
-  implementation 'buzz.getcoco:cocomediasdk-java:0.0.5-lite'
-  implementation 'buzz.getcoco:cocomediasdk-android:0.0.11'
-  implementation 'com.google.android.exoplayer:exoplayer:2.16.1'
-  implementation 'androidx.camera:camera-view:1.0.0-alpha31'
+  implementation 'buzz.getcoco:cocomediasdk-java:0.0.6-lite'
+  implementation 'buzz.getcoco:cocomediasdk-android:0.0.12'
+  implementation 'com.github.elear-solutions:CocoExoPlayer:e1d5938371'
+  implementation 'androidx.camera:camera-view:1.0.0-alpha32'
 
   coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
@@ -50,7 +50,7 @@ dependencies {
   implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
 
   testImplementation 'junit:junit:4.13.2'
-  testImplementation 'org.mockito:mockito-core:3.12.4'
+  testImplementation 'org.mockito:mockito-core:4.0.0'
 
   androidTestImplementation 'androidx.test:rules:1.4.1-alpha03'
   androidTestImplementation 'org.mockito:mockito-android:3.12.4'

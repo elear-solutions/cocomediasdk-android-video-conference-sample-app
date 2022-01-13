@@ -3,6 +3,7 @@ package buzz.getcoco.media.sample;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -10,13 +11,13 @@ import androidx.annotation.RequiresPermission;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.CameraSelector;
 import androidx.core.app.ActivityCompat;
+import buzz.getcoco.exoplayer2.ExoPlayer;
 import buzz.getcoco.media.CameraStreamHandler;
 import buzz.getcoco.media.MediaSession;
 import buzz.getcoco.media.MicStreamHandler;
 import buzz.getcoco.media.Node;
 import buzz.getcoco.media.sample.databinding.ActivityCallerBinding;
 import buzz.getcoco.media.ui.NodePlayerView;
-import com.google.android.exoplayer2.ExoPlayer;
 import com.google.common.collect.ImmutableList;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -55,6 +56,23 @@ public class CallerActivity extends AppCompatActivity {
   private ImmutableList<NodePlayerView> playerViews;
 
   private ActivityCallerBinding binding;
+
+  private void enterCommunicationMode() {
+    // NOTE: This will make the audio to go into communication mode and uses speakerPhone.
+    //  and since, this is being called in onStart(), and exit is being called in onStop()
+    //  this mode mode will be exited as this screen closes. This can be changed according
+    //  to the app needs.
+
+    AudioManager am = getSystemService(AudioManager.class);
+
+    am.setMode(AudioManager.MODE_IN_COMMUNICATION);
+    am.setSpeakerphoneOn(true);
+  }
+
+  private void exitCommunicationMode() {
+    AudioManager am = getSystemService(AudioManager.class);
+    am.setMode(AudioManager.MODE_NORMAL);
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -243,6 +261,8 @@ public class CallerActivity extends AppCompatActivity {
   protected void onStart() {
     super.onStart();
 
+    enterCommunicationMode();
+
     for (int i = 0; i < playerViews.size(); i++) {
       NodePlayerView pv = playerViews.get(i);
       pv.onResume();
@@ -259,6 +279,8 @@ public class CallerActivity extends AppCompatActivity {
 
   @Override
   protected void onStop() {
+    exitCommunicationMode();
+
     super.onStop();
 
     for (int i = 0; i < playerViews.size(); i++) {
