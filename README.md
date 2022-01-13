@@ -41,10 +41,10 @@
   ```
 - Add media sdk dependency in module level build.gradle
   ```groovy
-  implementation 'buzz.getcoco:cocomediasdk-java:0.0.5-lite'
-  implementation 'buzz.getcoco:cocomediasdk-android:0.0.11'
-  implementation 'com.google.android.exoplayer:exoplayer:2.16.1'
-  implementation 'androidx.camera:camera-view:1.0.0-alpha31'
+  implementation 'buzz.getcoco:cocomediasdk-java:0.0.6-lite'
+  implementation 'buzz.getcoco:cocomediasdk-android:0.0.12'
+  implementation 'com.github.elear-solutions:CocoExoPlayer:e1d5938371'
+  implementation 'androidx.camera:camera-view:1.0.0-alpha32'
   ```
 - Add client id present in step 6 in AndroidManifest (Need not for Service Apps with custom login)
   ```xml
